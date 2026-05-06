@@ -204,7 +204,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_PlanePrefab: {fileID: 6178361861684130386, guid: 327c4b718289842e49c0f102341be05e, type: 3}
-  m_DetectionMode: -1
+  m_DetectionMode: 2
 --- !u!114 &240907900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ARPlaceCube
   raycastManager: {fileID: 240907898}
+  planeManager: {fileID: 240907899}
 --- !u!1 &346349097
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,34 +1,23 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
 
 public class ARPlaceCube : MonoBehaviour
 {
     [SerializeField] private ARRaycastManager raycastManager;
-    bool isPlacing = false;
-
-    private void OnEnable()
-    {
-        EnhancedTouchSupport.Enable();
-    }
-
-    private void OnDisable()
-    {
-        EnhancedTouchSupport.Disable();
-    }
+    [SerializeField] private ARPlaneManager planeManager;
+    private bool isPlacing;
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (!raycastManager) return;
         if (isPlacing) return;
 
-        bool pressed = false;
+        var pressed = false;
         Vector2 screenPosition = default;
 
 
@@ -54,22 +43,32 @@ public class ARPlaceCube : MonoBehaviour
         }
     }
 
-    void PlaceObject(Vector2 touchPosition)
+    private void OnEnable()
+    {
+        EnhancedTouchSupport.Enable();
+    }
+
+    private void OnDisable()
+    {
+        EnhancedTouchSupport.Disable();
+    }
+
+    private void PlaceObject(Vector2 touchPosition)
     {
         var rayHits = new List<ARRaycastHit>();
-        raycastManager.Raycast(touchPosition, rayHits, TrackableType.AllTypes);
+        raycastManager.Raycast(touchPosition, rayHits);
 
         if (rayHits.Count > 0)
         {
-            Vector3 hitPosePosition = rayHits[0].pose.position;
-            Quaternion hitPoseRotation = rayHits[0].pose.rotation;
+            var hitPosePosition = rayHits[0].pose.position;
+            var hitPoseRotation = rayHits[0].pose.rotation;
             Instantiate(raycastManager.raycastPrefab, hitPosePosition, hitPoseRotation);
         }
 
         StartCoroutine(SetIsPlacingToFalseWithDelay());
     }
 
-    IEnumerator SetIsPlacingToFalseWithDelay()
+    private IEnumerator SetIsPlacingToFalseWithDelay()
     {
         yield return new WaitForSeconds(0.25f);
         isPlacing = false;
