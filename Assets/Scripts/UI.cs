@@ -11,6 +11,7 @@ public class UI : MonoBehaviour
 
     private Button _editButton;
     private Button _exitEditButton;
+    private Button _addButton;
 
     private void Awake()
     {
@@ -25,6 +26,8 @@ public class UI : MonoBehaviour
         _editButton.RegisterCallback<ClickEvent>(StartEdit);
         _exitEditButton = _uiDocument.rootVisualElement.Q<Button>("ExitEditButton");
         _exitEditButton.RegisterCallback<ClickEvent>(ExitEdit);
+        _addButton = _uiDocument.rootVisualElement.Q<Button>("AddButton");
+        _addButton.RegisterCallback<ClickEvent>(AddImage);
     }
 
     private void StartEdit(ClickEvent evt)
@@ -39,5 +42,20 @@ public class UI : MonoBehaviour
         editMode = false;
         _editModeVe.AddToClassList("hidden");
         _mainModeVe.RemoveFromClassList("hidden");
+    }
+
+    private void AddImage(ClickEvent evt)
+    {
+        NativeFilePicker.PickFile(FilePicked, "image/*");
+    }
+
+    private void FilePicked(string path)
+    {
+        if (path == null) return;
+
+        var fileContent = System.IO.File.ReadAllBytes(path);
+        var tex = new Texture2D(2, 2);
+        ImageConversion.LoadImage(tex, fileContent);
+        _addButton.style.backgroundImage = Background.FromTexture2D(tex);
     }
 }
