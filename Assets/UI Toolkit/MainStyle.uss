@@ -1,21 +1,33 @@
 :root {
 }
 
+.hidden {
+    display: none;
+}
+
 #vertical-list {
     flex-direction: column;
     justify-content: flex-end;
     flex-grow: 1;
 }
 
-#horizontal-list {
+.horizontal-list {
     flex-direction: row;
     justify-content: center;
-    flex-grow: 1;
-    max-height: 10%;
-    max-width: 1080px;
+    flex-shrink: 1;
+    height: 10%;
+    min-height: 100px;
 }
 
 .button {
-    margin: 5px;
+    margin: 15px;
     flex-grow: 1;
+    max-width: 380px;
+    background-color: rgb(202, 97, 195);
+    color: white;
+    border-radius: 65px;
+}
+
+.button .unity-image {
+    padding: 20px;
 }

@@ -37,7 +37,7 @@ public class ARPlaceCube : MonoBehaviour
             screenPosition = Mouse.current.position.ReadValue();
         }
 
-        if (pressed)
+        if (false && pressed)
         {
             isPlacing = true;
             PlaceObject(screenPosition);
@@ -73,5 +73,10 @@ public class ARPlaceCube : MonoBehaviour
     {
         yield return new WaitForSeconds(0.25f);
         isPlacing = false;
+    }
+
+    public static void Meow()
+    {
+        Console.WriteLine("meow");
     }
 }
