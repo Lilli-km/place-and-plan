@@ -15,19 +15,19 @@
     flex-direction: row;
     justify-content: center;
     flex-shrink: 1;
-    height: 10%;
-    min-height: 100px;
+    height: 50px;
 }
 
 .button {
-    margin: 15px;
+    margin: 1px;
     flex-grow: 1;
+    flex-shrink: 1;
     max-width: 380px;
     background-color: rgb(202, 97, 195);
     color: white;
-    border-radius: 65px;
+    border-radius: 15px;
 }
 
 .button .unity-image {
-    padding: 20px;
+    padding: 2px;
 }
