@@ -1,4 +1,7 @@
 :root {
+    --button-height: 164px;
+    --button-radius: 32px;
+    --button-margin: 8px;
 }
 
 .hidden {
@@ -15,19 +18,44 @@
     flex-direction: row;
     justify-content: center;
     flex-shrink: 1;
-    height: 50px;
+    height: 164px;
+    flex-wrap: wrap;
 }
 
 .button {
-    margin: 1px;
+    margin: var(--button-margin);
     flex-grow: 1;
     flex-shrink: 1;
-    max-width: 380px;
-    background-color: rgb(202, 97, 195);
     color: white;
-    border-radius: 15px;
+    border-radius: var(--button-radius);
+    translate: 0 -12px;
+    border-color: transparent;
 }
 
-.button .unity-image {
-    padding: 2px;
+#MainMode .button {
+    background-color: rgb(219, 198, 255);
+}
+#MainMode .shadows-row * {
+    background-color: #f5f0ff;
+}
+
+#EditMode .button {
+    background-color: rgb(213, 237, 172);
+}
+#EditMode .shadows-row * {
+    background-color: #f2fae6;
+}
+
+.shadows-row {
+    flex-direction: row;
+    height: var(--button-height);
+    position: absolute;
+    width: 100%;
+}
+
+.shadows-row * {
+    width: auto;
+    height: auto;
+    margin: var(--button-margin);
+    border-radius: var(--button-radius);
 }

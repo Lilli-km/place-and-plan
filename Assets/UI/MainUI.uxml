@@ -1,27 +1,42 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/MainStyle.uss?fileID=7433441132597879392&amp;guid=293653e9110f4473e9e8564fabb5d53d&amp;type=3#MainStyle"/>
     <ui:VisualElement name="vertical-list">
-        <ui:VisualElement name="MainMode" class="horizontal-list">
-            <ui:Button class="button">
-                <ui:Image/>
-            </ui:Button>
-            <ui:Button class="button">
-                <ui:Image source="project://database/Assets/Icons/camera.png?fileID=2800000&amp;guid=a4bbf9d15a3c3445388063337f2059d4&amp;type=3#camera" name="Image"/>
-            </ui:Button>
-            <ui:Button name="EditButton" class="button">
-                <ui:Image source="project://database/Assets/Icons/pencil.png?fileID=2800000&amp;guid=c679e41890d704135a46ac5efdbe41eb&amp;type=3#pencil"/>
-            </ui:Button>
+        <ui:VisualElement name="MainMode">
+            <ui:VisualElement name="VisualElement" class="shadows-row" style="flex-grow: 1;">
+                <ui:VisualElement style="flex-grow: 1;"/>
+                <ui:VisualElement style="flex-grow: 1;"/>
+                <ui:VisualElement style="flex-grow: 1;"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="horizontal-list" style="flex-grow: 1;">
+                <ui:Button class="button">
+                    <ui:Image source="project://database/Assets/Icons/camera.png?fileID=2800000&amp;guid=a4bbf9d15a3c3445388063337f2059d4&amp;type=3#camera" name="Image"/>
+                </ui:Button>
+                <ui:Button class="button">
+                    <ui:Image source="project://database/Assets/Icons/camera.png?fileID=2800000&amp;guid=a4bbf9d15a3c3445388063337f2059d4&amp;type=3#camera" name="Image"/>
+                </ui:Button>
+                <ui:Button name="EditButton" class="button">
+                    <ui:Image source="project://database/Assets/Icons/pencil.png?fileID=2800000&amp;guid=c679e41890d704135a46ac5efdbe41eb&amp;type=3#pencil"/>
+                </ui:Button>
+            </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="EditMode" class="horizontal-list">
-            <ui:Button class="button">
-                <ui:Image/>
-            </ui:Button>
-            <ui:Button name="AddButton" class="button">
-                <ui:Image source="project://database/Assets/Icons/plus.png?fileID=2800000&amp;guid=cb4f9110c4a3b443399b923b594551d1&amp;type=3#plus" name="Image"/>
-            </ui:Button>
-            <ui:Button name="ExitEditButton" class="button">
-                <ui:Image source="project://database/Assets/Icons/x.png?fileID=2800000&amp;guid=bc203d626a573469d9756091a3caa851&amp;type=3#x"/>
-            </ui:Button>
+        <ui:VisualElement name="EditMode">
+            <ui:VisualElement name="VisualElement" class="shadows-row" style="flex-grow: 1;">
+                <ui:VisualElement style="flex-grow: 1;"/>
+                <ui:VisualElement style="flex-grow: 1;"/>
+                <ui:VisualElement style="flex-grow: 1;"/>
+            </ui:VisualElement>
+            <ui:VisualElement class="horizontal-list" style="flex-grow: 1;">
+                <ui:Button class="button">
+                    <ui:Image/>
+                    <ui:Image source="project://database/Assets/Icons/plus.png?fileID=2800000&amp;guid=cb4f9110c4a3b443399b923b594551d1&amp;type=3#plus" name="Image"/>
+                </ui:Button>
+                <ui:Button name="AddButton" class="button">
+                    <ui:Image source="project://database/Assets/Icons/plus.png?fileID=2800000&amp;guid=cb4f9110c4a3b443399b923b594551d1&amp;type=3#plus" name="Image"/>
+                </ui:Button>
+                <ui:Button name="ExitEditButton" class="button">
+                    <ui:Image source="project://database/Assets/Icons/x.png?fileID=2800000&amp;guid=bc203d626a573469d9756091a3caa851&amp;type=3#x"/>
+                </ui:Button>
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
