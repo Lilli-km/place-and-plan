@@ -46,6 +46,8 @@ public class UI : MonoBehaviour
 
     private void AddImage(ClickEvent evt)
     {
+        if (evt.target != _addButton) return;
+
         NativeFilePicker.PickFile(FilePicked, "image/*");
     }
 
