@@ -18,6 +18,7 @@ public class UI : MonoBehaviour
 
     [SerializeField] private GameObject xrOrigin;
     private PlaceImage _placeImage;
+    private ARController _arController;
 
     private void Awake()
     {
@@ -40,6 +41,8 @@ public class UI : MonoBehaviour
         _placeButton.RegisterCallback<ClickEvent>(PlaceImage);
         
         _placeImage = xrOrigin.GetComponent<PlaceImage>();
+        _arController = xrOrigin.GetComponent<ARController>();
+        _arController.HideGrid();
     }
 
     private void StartEdit(ClickEvent evt)
@@ -47,6 +50,7 @@ public class UI : MonoBehaviour
         editMode = true;
         _mainModeVe.AddToClassList("hidden");
         _editModeVe.RemoveFromClassList("hidden");
+        _arController.ShowGrid();
     }
 
     private void ExitEdit(ClickEvent evt)
@@ -54,6 +58,7 @@ public class UI : MonoBehaviour
         editMode = false;
         _editModeVe.AddToClassList("hidden");
         _mainModeVe.RemoveFromClassList("hidden");
+        _arController.HideGrid();
     }
 
     private void AddImage(ClickEvent evt)
