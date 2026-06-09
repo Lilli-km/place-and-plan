@@ -47,6 +47,15 @@
     background-color: #f2fae6;
 }
 
+#PlaceMode .button {
+    background-color: rgb(237 172 172);
+    height: 180px;
+    translate: 0 -46px;
+}
+#PlaceMode .shadows-row * {
+    background-color: #fae6e6;
+}
+
 .shadows-row {
     flex-direction: row;
     height: var(--button-height);

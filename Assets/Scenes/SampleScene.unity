@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 240907899}
   - component: {fileID: 240907898}
   - component: {fileID: 240907900}
+  - component: {fileID: 240907901}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -212,13 +213,30 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240907895}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 447f5dc38c26e469b93c1ec41f31d25f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ARPlaceCube
   raycastManager: {fileID: 240907898}
   planeManager: {fileID: 240907899}
+--- !u!114 &240907901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240907895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5454ba39d40406f9d23f5fc3ccd55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlaceImage
+  camera: {fileID: 659539553}
+  imageTemplate: {fileID: 3542551343640062109, guid: c78544fe87bc542d2ad0d1caacd02cd8, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &346349097
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,6 +847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061e10b7c97bc4757a2aee416648d512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI
+  xrOrigin: {fileID: 240907895}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

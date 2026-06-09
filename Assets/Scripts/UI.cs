@@ -7,11 +7,17 @@ public class UI : MonoBehaviour
 
     private VisualElement _editModeVe;
     private VisualElement _mainModeVe;
+    private VisualElement _placeModeVe;
     private bool editMode = false;
+    private bool placeMode = false;
 
     private Button _editButton;
     private Button _exitEditButton;
     private Button _addButton;
+    private Button _placeButton;
+
+    [SerializeField] private GameObject xrOrigin;
+    private PlaceImage _placeImage;
 
     private void Awake()
     {
@@ -20,7 +26,9 @@ public class UI : MonoBehaviour
 
         _mainModeVe = _uiDocument.rootVisualElement.Q<VisualElement>("MainMode");
         _editModeVe = _uiDocument.rootVisualElement.Q<VisualElement>("EditMode");
+        _placeModeVe = _uiDocument.rootVisualElement.Q<VisualElement>("PlaceMode");
         _editModeVe.AddToClassList("hidden");
+        _placeModeVe.AddToClassList("hidden");
 
         _editButton = _uiDocument.rootVisualElement.Q<Button>("EditButton");
         _editButton.RegisterCallback<ClickEvent>(StartEdit);
@@ -28,6 +36,10 @@ public class UI : MonoBehaviour
         _exitEditButton.RegisterCallback<ClickEvent>(ExitEdit);
         _addButton = _uiDocument.rootVisualElement.Q<Button>("AddButton");
         _addButton.RegisterCallback<ClickEvent>(AddImage);
+        _placeButton = _uiDocument.rootVisualElement.Q<Button>("PlaceButton");
+        _placeButton.RegisterCallback<ClickEvent>(PlaceImage);
+        
+        _placeImage = xrOrigin.GetComponent<PlaceImage>();
     }
 
     private void StartEdit(ClickEvent evt)
@@ -53,11 +65,20 @@ public class UI : MonoBehaviour
 
     private void FilePicked(string path)
     {
-        if (path == null) return;
+        _placeImage.AddImage(path);
+        placeMode = true;
+        _editModeVe.AddToClassList("hidden");
+        _placeModeVe.RemoveFromClassList("hidden");
+    }
 
-        var fileContent = System.IO.File.ReadAllBytes(path);
-        var tex = new Texture2D(2, 2);
-        ImageConversion.LoadImage(tex, fileContent);
-        _addButton.style.backgroundImage = Background.FromTexture2D(tex);
+    private void PlaceImage(ClickEvent evt)
+    {
+        if (evt.target != _placeButton) return;
+        
+        _placeImage.PlaceImageInSpace();
+        
+        placeMode = false;
+        _placeModeVe.AddToClassList("hidden");
+        _editModeVe.RemoveFromClassList("hidden");
     }
 }
