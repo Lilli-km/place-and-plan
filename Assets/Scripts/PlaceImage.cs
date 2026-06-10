@@ -33,9 +33,10 @@ public class PlaceImage : MonoBehaviour
         var transform = camera.transform;
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit,
-                Mathf.Infinity, layerMask))
+                1, layerMask))
         {
             currentQuad.transform.position = hit.point;
+            currentQuad.transform.rotation = Quaternion.FromToRotation(-Vector3.forward, hit.normal);
         }
     }
 }
