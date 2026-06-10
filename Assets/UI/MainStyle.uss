@@ -33,6 +33,14 @@
     border-color: transparent;
 }
 
+.big-button {
+    flex-grow: 8;
+}
+
+.shadows-row .big-button {
+    flex-grow: 2.3;
+}
+
 #MainMode .button {
     background-color: rgb(219, 198, 255);
 }
