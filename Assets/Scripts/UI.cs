@@ -11,6 +11,7 @@ public class UI : MonoBehaviour
     private bool editMode = false;
     private bool placeMode = false;
 
+    private Button _photoButton;
     private Button _editButton;
     private Button _exitEditButton;
     private Button _addButton;
@@ -31,6 +32,8 @@ public class UI : MonoBehaviour
         _editModeVe.AddToClassList("hidden");
         _placeModeVe.AddToClassList("hidden");
 
+        _photoButton = _uiDocument.rootVisualElement.Q<Button>("PhotoButton");
+        _photoButton.RegisterCallback<ClickEvent>(TakePhoto);
         _editButton = _uiDocument.rootVisualElement.Q<Button>("EditButton");
         _editButton.RegisterCallback<ClickEvent>(StartEdit);
         _exitEditButton = _uiDocument.rootVisualElement.Q<Button>("ExitEditButton");
@@ -43,6 +46,11 @@ public class UI : MonoBehaviour
         _placeImage = xrOrigin.GetComponent<PlaceImage>();
         _arController = xrOrigin.GetComponent<ARController>();
         _arController.HideGrid();
+    }
+
+    private void TakePhoto(ClickEvent evt)
+    {
+        GetComponent<TakePhotos>().TakePhoto();
     }
 
     private void StartEdit(ClickEvent evt)

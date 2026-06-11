@@ -7,7 +7,7 @@
                 <ui:VisualElement style="flex-grow: 1;"/>
             </ui:VisualElement>
             <ui:VisualElement class="horizontal-list" style="flex-grow: 1;">
-                <ui:Button class="button big-button">
+                <ui:Button name="PhotoButton" class="button big-button">
                     <ui:Image source="project://database/Assets/Icons/camera.png?fileID=2800000&amp;guid=a4bbf9d15a3c3445388063337f2059d4&amp;type=3#camera" name="Image"/>
                 </ui:Button>
                 <ui:Button name="EditButton" class="button">
