@@ -1,0 +1,13 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainStyle.uss?fileID=7433441132597879392&amp;guid=293653e9110f4473e9e8564fabb5d53d&amp;type=3"/>
+    <Style src="project://database/Assets/UI/SizesStyle.uss?fileID=7433441132597879392&amp;guid=13eb03bc338194bc98286e93888b77c9&amp;type=3#SizesStyle"/>
+    <ui:VisualElement class="outerContainer" style="flex-grow: 1;">
+        <ui:VisualElement name="Container" class="container" style="flex-grow: 1;">
+            <ui:VisualElement style="flex-grow: 1;">
+                <ui:Label text="Größe auswählen:" display-tooltip-when-elided="false" class="label"/>
+                <ui:RadioButtonGroup choices="9 x 13 cm,10 x 15 cm,11 x 17 cm,13 x 18 cm,30 x 20 cm,40 x 30 cm,45 x 30 cm,50 x 40 cm" value="0" name="RadioButtons" class="listGroup"/>
+            </ui:VisualElement>
+            <ui:Button text="Bestätigen" name="Button" class="button"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

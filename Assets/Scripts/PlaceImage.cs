@@ -10,14 +10,14 @@ public class PlaceImage : MonoBehaviour
     private bool isImageHolding = false;
     private GameObject currentQuad;
 
-    public void AddImage(string path)
+    public void AddImage(string path, Size size)
     {
         if (isImageHolding) return;
         
         isImageHolding = true;
         currentQuad = Instantiate(imageTemplate);
         ImageController controller = currentQuad.GetComponent<ImageController>();
-        controller.SetImage(path);
+        controller.SetImage(path, size);
     }
 
     public void PlaceImageInSpace()
@@ -40,3 +40,4 @@ public class PlaceImage : MonoBehaviour
         }
     }
 }
+

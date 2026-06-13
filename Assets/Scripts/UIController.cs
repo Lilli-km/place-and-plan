@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class UI : MonoBehaviour
+public class UIController : MonoBehaviour
 {
     private UIDocument _uiDocument;
 
@@ -20,6 +20,9 @@ public class UI : MonoBehaviour
     [SerializeField] private GameObject xrOrigin;
     private PlaceImage _placeImage;
     private ARController _arController;
+
+    [SerializeField] private SizesUI _sizesUI;
+    private string _imagePath;
 
     private void Awake()
     {
@@ -78,9 +81,18 @@ public class UI : MonoBehaviour
 
     private void FilePicked(string path)
     {
-        _placeImage.AddImage(path);
+        if (path == null) return;
+        
+         _imagePath = path;
+        _sizesUI.ShowSizes();
+        
         placeMode = true;
         _editModeVe.AddToClassList("hidden");
+    }
+
+    public void CreateImage(Size size)
+    {
+        _placeImage.AddImage(_imagePath, size);
         _placeModeVe.RemoveFromClassList("hidden");
     }
 

@@ -14,11 +14,13 @@ public class ImageController : MonoBehaviour
         renderer.material = _material;
     }
 
-    public void SetImage(string path)
+    public void SetImage(string path, Size size)
     {
         var fileContent = System.IO.File.ReadAllBytes(path);
         var tex = new Texture2D(2, 2);
         ImageConversion.LoadImage(tex, fileContent);
         _material.mainTexture = tex;
+        imageObject.transform.localScale = new Vector3(size.Width, size.Height, 1);
+        Debug.Log(imageObject.transform.localScale);
     }
 }
