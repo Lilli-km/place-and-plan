@@ -37,7 +37,7 @@ public class ARPlaceCube : MonoBehaviour
             screenPosition = Mouse.current.position.ReadValue();
         }
 
-        if (false && pressed)
+        if (pressed)
         {
             isPlacing = true;
             PlaceObject(screenPosition);

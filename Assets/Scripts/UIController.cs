@@ -18,7 +18,7 @@ public class UIController : MonoBehaviour
     private Button _placeButton;
 
     [SerializeField] private GameObject xrOrigin;
-    private PlaceImage _placeImage;
+    private ImageManager _imageManager;
     private ARController _arController;
 
     [SerializeField] private SizesUI _sizesUI;
@@ -46,7 +46,7 @@ public class UIController : MonoBehaviour
         _placeButton = _uiDocument.rootVisualElement.Q<Button>("PlaceButton");
         _placeButton.RegisterCallback<ClickEvent>(PlaceImage);
         
-        _placeImage = xrOrigin.GetComponent<PlaceImage>();
+        _imageManager = xrOrigin.GetComponent<ImageManager>();
         _arController = xrOrigin.GetComponent<ARController>();
         _arController.HideGrid();
     }
@@ -62,6 +62,7 @@ public class UIController : MonoBehaviour
         _mainModeVe.AddToClassList("hidden");
         _editModeVe.RemoveFromClassList("hidden");
         _arController.ShowGrid();
+        _imageManager.ShowImageButtons();
     }
 
     private void ExitEdit(ClickEvent evt)
@@ -70,6 +71,7 @@ public class UIController : MonoBehaviour
         _editModeVe.AddToClassList("hidden");
         _mainModeVe.RemoveFromClassList("hidden");
         _arController.HideGrid();
+        _imageManager.HideImageButtons();
     }
 
     private void AddImage(ClickEvent evt)
@@ -92,7 +94,7 @@ public class UIController : MonoBehaviour
 
     public void CreateImage(Size size)
     {
-        _placeImage.AddImage(_imagePath, size);
+        _imageManager.AddImage(_imagePath, size);
         _placeModeVe.RemoveFromClassList("hidden");
     }
 
@@ -100,7 +102,7 @@ public class UIController : MonoBehaviour
     {
         if (evt.target != _placeButton) return;
         
-        _placeImage.PlaceImageInSpace();
+        _imageManager.PlaceImageInSpace();
         
         placeMode = false;
         _placeModeVe.AddToClassList("hidden");
