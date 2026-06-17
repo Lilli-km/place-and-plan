@@ -40,7 +40,8 @@ public class ImageController : MonoBehaviour
         var tex = new Texture2D(2, 2);
         ImageConversion.LoadImage(tex, fileContent);
         _material.mainTexture = tex;
-        imageContainer.transform.localScale = new Vector3(size.Width, size.Height, 1);
+        size.RotateSize(tex.width, tex.height);
+        imageContainer.transform.localScale = size.ToVector3();
         closeButton = Instantiate(buttonPrefab, transform);
         closeButton.transform.SetPositionAndRotation(cornerTopLeft.transform.position, cornerTopLeft.transform.rotation);
         closeButton.GetComponent<ButtonCallback>().buttonHitCallback = OnButtonClose;

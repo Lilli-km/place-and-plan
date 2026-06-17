@@ -5,7 +5,28 @@ using UnityEngine.UIElements;
 
 public class Size
 {
-    public float Width, Height;
+    public int Width, Height;
+
+    public void RotateSize(int width, int height)
+    {
+        // Make Width the bigger size
+        if (Width < Height)
+        {
+            (Width, Height) = (Height, Width);
+        }
+        
+        if (width > height)
+        {
+            return;
+        }
+
+        (Width, Height) = (Height, Width);
+    }
+
+    public Vector3 ToVector3()
+    {
+        return new Vector3((float)Width / 100, (float)Height / 100, 1);
+    }
 }
 
 public class SizesUI : MonoBehaviour
@@ -43,8 +64,8 @@ public class SizesUI : MonoBehaviour
         string[] selection = selected.Substring(0, selected.Length - 2).Split("x");
         mainUI.CreateImage(new Size
         {
-            Width = float.Parse(selection[0]) / 100,
-            Height = float.Parse(selection[1]) / 100
+            Width = int.Parse(selection[0]),
+            Height = int.Parse(selection[1])
         });
         _container.AddToClassList("hidden");
     }
