@@ -3,13 +3,12 @@ using UnityEngine.UIElements;
 
 public class UIController : MonoBehaviour
 {
+    public static UIController Instance;
     private UIDocument _uiDocument;
 
     private VisualElement _editModeVe;
     private VisualElement _mainModeVe;
     private VisualElement _placeModeVe;
-    private bool editMode = false;
-    private bool placeMode = false;
 
     private Button _photoButton;
     private Button _editButton;
@@ -26,6 +25,7 @@ public class UIController : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         _uiDocument = GetComponent<UIDocument>();
         if (_uiDocument == null) Debug.LogError("UIDocument not found");
 
@@ -58,7 +58,6 @@ public class UIController : MonoBehaviour
 
     private void StartEdit(ClickEvent evt)
     {
-        editMode = true;
         _mainModeVe.AddToClassList("hidden");
         _editModeVe.RemoveFromClassList("hidden");
         _arController.ShowGrid();
@@ -67,7 +66,6 @@ public class UIController : MonoBehaviour
 
     private void ExitEdit(ClickEvent evt)
     {
-        editMode = false;
         _editModeVe.AddToClassList("hidden");
         _mainModeVe.RemoveFromClassList("hidden");
         _arController.HideGrid();
@@ -88,13 +86,20 @@ public class UIController : MonoBehaviour
          _imagePath = path;
         _sizesUI.ShowSizes(CreateImage);
         
-        placeMode = true;
         _editModeVe.AddToClassList("hidden");
+        _imageManager.HideImageButtons();
     }
 
     private void CreateImage(Size size)
     {
         _imageManager.AddImage(_imagePath, size);
+        _placeModeVe.RemoveFromClassList("hidden");
+    }
+
+    public void MoveImage(ImageController image)
+    {
+        _imageManager.HoldExistingImage(image);
+        _editModeVe.AddToClassList("hidden");
         _placeModeVe.RemoveFromClassList("hidden");
     }
 
@@ -104,7 +109,6 @@ public class UIController : MonoBehaviour
         
         _imageManager.PlaceImageInSpace();
         
-        placeMode = false;
         _placeModeVe.AddToClassList("hidden");
         _editModeVe.RemoveFromClassList("hidden");
     }

@@ -49,9 +49,9 @@ public class ButtonCallback : MonoBehaviour
                 }
                 break;
             case ButtonActions.Move:
-                if (resizeMaterial != null)
+                if (moveMaterial != null)
                 {
-                    mesh.material = resizeMaterial;
+                    mesh.material = moveMaterial;
                 }
                 else
                 {

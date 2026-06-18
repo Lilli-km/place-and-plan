@@ -9,10 +9,12 @@ public class ImageController : MonoBehaviour
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private GameObject cornerTopLeft;
     [SerializeField] private GameObject cornerBottomRight;
+    [SerializeField] private GameObject cornerBottomLeft;
     public ImageManager manager;
     private Material _material;
     private GameObject _closeButton;
     private GameObject _resizeButton;
+    private GameObject _moveButton;
     private Texture2D texture;
     private Size _size;
 
@@ -42,16 +44,23 @@ public class ImageController : MonoBehaviour
         }), _size.SizeUIValue);
     }
 
+    private void OnButtonMove()
+    {
+        UIController.Instance.MoveImage(this);
+    }
+
     public void ShowButtons()
     {
         _closeButton.SetActive(true);
         _resizeButton.SetActive(true);
+        _moveButton.SetActive(true);
     }
 
     public void HideButtons()
     {
         _closeButton.SetActive(false);
         _resizeButton.SetActive(false);
+        _moveButton.SetActive(false);
     }
 
     public void SetImage(string path, Size size)
@@ -64,6 +73,7 @@ public class ImageController : MonoBehaviour
         imageContainer.transform.localScale = size.ToVector3();
         _size = size;
         AddButtons();
+        HideButtons();
     }
 
     private void AddButtons()
@@ -74,6 +84,10 @@ public class ImageController : MonoBehaviour
         _resizeButton = Instantiate(buttonPrefab, transform);
         _resizeButton.GetComponent<ButtonCallback>().SetIcon(ButtonCallback.ButtonActions.Resize);
         _resizeButton.GetComponent<ButtonCallback>().buttonHitCallback = OnButtonResize;
+
+        _moveButton = Instantiate(buttonPrefab, transform);
+        _moveButton.GetComponent<ButtonCallback>().SetIcon(ButtonCallback.ButtonActions.Move);
+        _moveButton.GetComponent<ButtonCallback>().buttonHitCallback = OnButtonMove;
         
         MoveButtons();
     }
@@ -82,5 +96,6 @@ public class ImageController : MonoBehaviour
     {
         _closeButton.transform.SetPositionAndRotation(cornerTopLeft.transform.position, cornerTopLeft.transform.rotation);
         _resizeButton.transform.SetPositionAndRotation(cornerBottomRight.transform.position, cornerBottomRight.transform.rotation);
+        _moveButton.transform.SetPositionAndRotation(cornerBottomLeft.transform.position, cornerBottomLeft.transform.rotation);
     }
 }

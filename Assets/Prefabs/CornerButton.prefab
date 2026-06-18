@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2302938616062956186}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.70710677}
-  m_LocalPosition: {x: 0, y: 0.00000011920929, z: -0.0000001192093}
+  m_LocalRotation: {x: 0.035946764, y: 0.70619243, z: -0.70619255, w: -0.035946738}
+  m_LocalPosition: {x: 0.00000014030526, y: -0.000000051846385, z: -0.00000011920933}
   m_LocalScale: {x: 1, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 700273428504946806}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -275.828, y: -90, z: 90}
 --- !u!33 &2810454191277165002
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -161,4 +161,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButtonCallback
   buttonObject: {fileID: 2302938616062956186}
   resizeTexture: {fileID: 2800000, guid: c5852a372095d4beebbeab9989c1d578, type: 3}
-  moveTexture: {fileID: 0}
+  moveTexture: {fileID: 2800000, guid: 39d4122d09ad14f908975cdc4c6bf72d, type: 3}

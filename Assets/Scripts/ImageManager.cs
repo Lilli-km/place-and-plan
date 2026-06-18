@@ -25,10 +25,18 @@ public class ImageManager : MonoBehaviour
         images.Add(controller);
     }
 
+    public void HoldExistingImage(ImageController image)
+    {
+        isImageHolding = true;
+        currentImage = image.gameObject;
+        HideImageButtons();
+    }
+
     public void PlaceImageInSpace()
     {
         currentImage = null;
         isImageHolding = false;
+        ShowImageButtons();
     }
 
     public void DeleteImage(ImageController image)
