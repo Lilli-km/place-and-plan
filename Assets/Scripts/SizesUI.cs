@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class Size
 {
-    public int Width, Height;
+    public int Width, Height, SizeUIValue;
 
     public void RotateSize(int width, int height)
     {
@@ -31,16 +31,22 @@ public class Size
 
 public class SizesUI : MonoBehaviour
 {
+    public static SizesUI Instance;
     private UIDocument _uiDocument;
-    [SerializeField] private UIController mainUI;
 
     private VisualElement _container;
 
     private RadioButtonGroup _radioGroup;
     private Button _button;
+    
+    public delegate void SizesUICallback(Size size);
+
+    private SizesUICallback _callback;
+
 
     private void Awake()
     {
+        Instance = this;
         _uiDocument = GetComponent<UIDocument>();
         if (_uiDocument == null) Debug.LogError("UIDocument not found");
 
@@ -52,9 +58,10 @@ public class SizesUI : MonoBehaviour
         _container.AddToClassList("hidden");
     }
 
-    public void ShowSizes()
+    public void ShowSizes(SizesUICallback callback, int defaultValue = 0)
     {
-        _radioGroup.value = 0;
+        _callback = callback;
+        _radioGroup.value = defaultValue;
         _container.RemoveFromClassList("hidden");
     }
 
@@ -62,10 +69,11 @@ public class SizesUI : MonoBehaviour
     {
         string selected = _radioGroup.choices.ElementAt(_radioGroup.value);
         string[] selection = selected.Substring(0, selected.Length - 2).Split("x");
-        mainUI.CreateImage(new Size
+        _callback(new Size
         {
             Width = int.Parse(selection[0]),
-            Height = int.Parse(selection[1])
+            Height = int.Parse(selection[1]),
+            SizeUIValue = _radioGroup.value
         });
         _container.AddToClassList("hidden");
     }

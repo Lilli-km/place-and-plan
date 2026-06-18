@@ -159,3 +159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03244968d37f5491dade3427da430097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonCallback
+  buttonObject: {fileID: 2302938616062956186}
+  resizeTexture: {fileID: 2800000, guid: c5852a372095d4beebbeab9989c1d578, type: 3}
+  moveTexture: {fileID: 0}

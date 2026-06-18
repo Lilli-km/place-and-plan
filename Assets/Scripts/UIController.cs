@@ -86,13 +86,13 @@ public class UIController : MonoBehaviour
         if (path == null) return;
         
          _imagePath = path;
-        _sizesUI.ShowSizes();
+        _sizesUI.ShowSizes(CreateImage);
         
         placeMode = true;
         _editModeVe.AddToClassList("hidden");
     }
 
-    public void CreateImage(Size size)
+    private void CreateImage(Size size)
     {
         _imageManager.AddImage(_imagePath, size);
         _placeModeVe.RemoveFromClassList("hidden");

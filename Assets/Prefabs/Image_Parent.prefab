@@ -49,6 +49,8 @@ MonoBehaviour:
   imageContainer: {fileID: 5473506425788447826}
   buttonPrefab: {fileID: 2753928310389715209, guid: 4cdc250ee4ac940f8a68e3419a666ae4, type: 3}
   cornerTopLeft: {fileID: 7840077416322364072}
+  cornerBottomRight: {fileID: 6662959909432055734}
+  manager: {fileID: 0}
 --- !u!1 &5473506425788447826
 GameObject:
   m_ObjectHideFlags: 0
