@@ -107,6 +107,7 @@ InitTestScene*.unity*
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 /Android_BackUpThisFolder_ButDontShipItWithYourGame
 /AR-Bilderprojektion_BurstDebugInformation_DoNotShip
+/Place & Plan_BurstDebugInformation_DoNotShip/
 .DS_Store
 Android-0.1.0-v1-IL2CPP.symbols.zip
 Assets/UnityXRContent/ARFoundation/SimulationEnvironments/Common/Materials/SimEnvironment_Accent.mat
